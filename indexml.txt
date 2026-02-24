@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Favourite Person ❤️</title>
+
+<style>
+body{
+  background:#ffe6f0;
+  font-family:Arial;
+  text-align:center;
+  padding:40px;
+  overflow-x:hidden;
+}
+.box{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  max-width:600px;
+  margin:auto;
+  box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+button{
+  padding:12px 22px;
+  margin:10px;
+  border:none;
+  border-radius:12px;
+  background:#ff4d88;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+button:hover{ background:#e6005c; }
+.hidden{display:none;}
+img{
+  width:120px;
+  border-radius:15px;
+  margin:8px;
+}
+.heart{
+  position:fixed;
+  top:-10px;
+  color:#ff4d88;
+  animation:fall 5s linear infinite;
+}
+@keyframes fall{
+  to{ transform:translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 💖 FLOATING HEARTS -->
+<script>
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(20+Math.random()*20)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),5000);
+},500);
+</script>
+
+<div class="box">
+
+<!-- 🎵 SONG BUTTON -->
+<button onclick="playSong()">Play our song 🎵</button>
+<div id="song" class="hidden">
+<iframe width="300" height="170"
+src="https://www.youtube.com/embed/AJtDXIazrMo?autoplay=1"
+frameborder="0" allow="autoplay"></iframe>
+</div>
+
+<!-- 💌 OPENING -->
+<div id="part1">
+<h1>Hey Love ❤️</h1>
+<p>I made this for you because normal messages aren’t enough.</p>
+<button onclick="next1()">Start 😌</button>
+</div>
+
+<!-- 😏 QUESTIONS -->
+<div id="part2" class="hidden">
+<h2>Relationship test 😏</h2>
+
+<p>Who fell first?</p>
+<button onclick="scoreAdd()">Rasmalai</button>
+<button onclick="wrong()">Kaju Katli</button>
+
+<p>Whom do you love more?</p>
+<button onclick="scoreAdd()">Rasmalai</button>
+<button onclick="wrong()">sabzi kachori</button>
+
+<p>Whois more horny?</p>
+<button onclick="scoreAdd()">kaju katli</button>
+<button onclick="wrong()">rasmalai</button>
+
+<p>Who loves teasing?</p>
+<button onclick="scoreAdd()">Kaju Katli</button>
+<button onclick="wrong()">Rasmalai</button>
+
+<p>Who is smarter?</p>
+<button onclick="scoreAdd()">Rasmalai</button>
+<button onclick="wrong()">Kaju Katli</button>
+
+<p>Who is cuter?</p>
+<button onclick="scoreAdd()">kaju katli</button>
+<button onclick="wrong()">rasmalai</button>
+
+
+<br>
+<button onclick="showScore()">Finish quiz</button>
+</div>
+
+<!-- 🧮 SCORE PAGE -->
+<div id="scorePage" class="hidden">
+<h2>Your score 😌</h2>
+<p id="scoreText"></p>
+<button onclick="showPassword()">Unlock final message 🔐</button>
+</div>
+
+<!-- 🔐 PASSWORD PAGE -->
+<div id="passwordPage" class="hidden">
+<h2>Enter password to continue</h2>
+<p>(Hint: kajukatli turns 21 😏)</p>
+<input id="pass" type="password">
+<br><br>
+<button onclick="checkPass()">Unlock ❤️</button>
+</div>
+
+<!-- ❤️ FINAL PAGE -->
+<div id="finalPage" class="hidden">
+<h2>Okay serious now…</h2>
+<p>No matter how much we tease each other,</p>
+<p>I really love you.</p>
+<h1>And I’m keeping you forever ❤️</h1>
+
+<!-- 📸 PHOTOS (replace with your links later) -->
+<img src="https://via.placeholder.com/120">
+<img src="https://via.placeholder.com/120">
+<img src="https://via.placeholder.com/120">
+</div>
+
+</div>
+
+<script>
+let score=0;
+
+function playSong(){
+  document.getElementById("song").style.display="block";
+}
+function next1(){
+  document.getElementById("part1").style.display="none";
+  document.getElementById("part2").style.display="block";
+}
+function scoreAdd(){
+  score++;
+  alert("Correct 😌");
+}
+function wrong(){
+  alert("Wrong 😂");
+}
+function showScore(){
+  document.getElementById("part2").style.display="none";
+  document.getElementById("scorePage").style.display="block";
+  document.getElementById("scoreText").innerHTML="You scored "+score+" out of 3 ❤️";
+}
+function showPassword(){
+  document.getElementById("scorePage").style.display="none";
+  document.getElementById("passwordPage").style.display="block";
+}
+function checkPass(){
+  let p=document.getElementById("pass").value;
+  if(p=="21"){
+    document.getElementById("passwordPage").style.display="none";
+    document.getElementById("finalPage").style.display="block";
+  } else {
+    alert("Wrong password 😏 try again");
+  }
+}
+</script>
+
+</body>
+</html>
